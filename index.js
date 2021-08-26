@@ -3,9 +3,10 @@ const generateMarkdown = require("./utils/generateMarkdown");
 const fs = require("fs");
 const inquirer = require("inquirer");
 const path = require("path");
+const docName = "README.md";
 
 // TODO: Create an array of questions for user input
-const questions = [
+const questionnaire = [
   {
     type: "input",
     name: "title",
@@ -35,7 +36,7 @@ const questions = [
   {
     type: "input",
     name: "test",
-    message: "What is the command for running tests?",
+    message: "What is the command for running a test?",
     default: "npm test",
   },
   {
@@ -64,14 +65,20 @@ const questions = [
     name: "email",
     message: "Enter your email address.",
   },
-  ,
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(docName, data) {
+  return fs.writeFileSync(path.join(process.cwd(), docName), data);
+}
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+  inquirer.prompt(questionnaire).then((userInputs) => {
+    console.log("\nAnalyzing data...\nGenerating README...\n");
+    writeToFile(docName, generateMarkdown({ ...userInputs }));
+  });
+}
 
 // Function call to initialize app
 init();
