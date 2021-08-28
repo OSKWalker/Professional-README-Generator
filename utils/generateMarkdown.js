@@ -2,7 +2,7 @@
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
   if (license !== "No License") {
-    return `![GitHub license](https://img.shields.io/badge/license-${license}-blue.svg)`;
+    return `![License](https://img.shields.io/badge/license-${license}-blue.svg)`;
   }
   return "";
 }
@@ -11,7 +11,7 @@ function renderLicenseBadge(license) {
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
   if (license !== "No License") {
-    return `\n* [License](#license)\n`;
+    return `[License](#license)`;
   }
   return "";
 }
@@ -38,28 +38,33 @@ ${renderLicenseBadge(data.license)}
 ${data.description}
 
 ## Table of Contents 
-
-* [Installation](#installation)
-
-* [Usage](#usage)
-${renderLicenseLink(data.license)}
-* [Contributing](#contributing)
-
-* [Tests](#tests)
-
-* [Questions](#questions)
-
+>
+>> - [Installation](#installation)
+>
+>> - [Usage](#usage)
+>
+>> - ${renderLicenseLink(data.license)}
+>
+>> - [Contributing](#contributing)
+>
+>> - [Test(s)](#test(s))
+>
+>> - [Questions](#questions)
+>
 ## Installation
 
-To install dendencies, utilize the following command:
+To install dependencies, utilize the following command:
 
-\`\`\`
 ${data.installation}
-\`\`\`
+
+${data.instructions}
+
 
 ## Usage
 
 ${data.usage}
+
+![Usage-Example](./assets/images/${data.example}?raw=true "Usage-Example")
 
 ${renderLicenseSection(data.license)}
   
@@ -71,9 +76,8 @@ ${data.contributing}
 
 To run tests, utilize the following command:
 
-\`\`\`
 ${data.test}
-\`\`\`
+
 
 ## Questions
 
